@@ -1,0 +1,59 @@
+# Ruff configuration for CostGuard
+
+# Target Python version
+target-version = "py310"
+
+# Line length
+line-length = 100
+
+# Enable all recommended rules
+select = [
+    "E",   # pycodestyle errors
+    "F",   # Pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "W",   # pycodestyle warnings
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "PTH", # flake8-use-pathlib
+    "TCH", # flake8-type-checking
+    "RUF", # Ruff-specific rules
+]
+
+# Ignore specific rules
+ignore = [
+    "E501",  # Line too long (handled by formatter)
+    "UP007", # Use X | Y for type annotations (not supported in Python 3.9)
+]
+
+# Exclude directories
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "__pycache__",
+    ".pytest_cache",
+    ".mypy_cache",
+    "dist",
+    "build",
+    "*.egg-info",
+]
+
+# Per-file ignores
+[per-file-ignores]
+"tests/*" = ["S101"]  # Allow assert in tests
+
+# Formatting configuration
+[format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+# Import sorting
+[isort]
+known-first-party = ["costguard"]
+combine-as-imports = true
+split-on-trailing-comma = true
