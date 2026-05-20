@@ -26,65 +26,11 @@ A production-ready local proxy that enforces hard spending limits before AI API 
 
 ## Architecture
 
-```mermaid
-flowchart TB
-    subgraph Client["Client Applications"]
-        A1[OpenAI SDK]
-        A2[Anthropic SDK]
-        A3[Custom Apps]
-    end
+<p align="center">
+  <img src="docs/architecture.svg" alt="CostGuard architecture" width="100%"/>
+</p>
 
-    subgraph CostGuard["CostGuard Proxy"]
-        B1[FastAPI Server]
-        B2[Circuit Breaker]
-        B3[Cost Estimator]
-        B4[Safe Mode Gate]
-        B5[Alert Manager]
-        B6[WebSocket Server]
-    end
-
-    subgraph Data["Data Layer"]
-        C1[(SQLite DB)]
-        C2[Pricing Cache]
-    end
-
-    subgraph Providers["AI Providers"]
-        D1[OpenAI]
-        D2[Anthropic]
-        D3[OpenRouter]
-    end
-
-    subgraph Dashboard["Dashboard"]
-        E1[Terminal UI]
-        E2[Real-time Metrics]
-    end
-
-    A1 -->|HTTP| B1
-    A2 -->|HTTP| B1
-    A3 -->|HTTP| B1
-
-    B1 --> B2
-    B2 -->|Check Limits| B3
-    B3 -->|Estimate Cost| C2
-    B2 -->|Safe Mode?| B4
-    B2 -->|Alert| B5
-
-    B2 -->|Allow| D1
-    B2 -->|Allow| D2
-    B2 -->|Allow| D3
-
-    B1 -->|Store| C1
-    B5 -->|Log| C1
-    B6 -->|Update| E1
-
-    E1 -->|WebSocket| B6
-    E2 -->|Query| C1
-
-    style CostGuard fill:#e1f5fe
-    style Data fill:#f3e5f5
-    style Providers fill:#e8f5e9
-    style Dashboard fill:#fff3e0
-```
+Client SDKs hit the OpenAI-compatible FastAPI proxy. The cost estimator pre-prices the request, then the circuit breaker evaluates session → hour → day → project limits. Allowed traffic forwards to the provider; tripped limits return a 429 and fire alerts. Spend and pricing live in local SQLite, and the terminal dashboard streams over WebSocket.
 
 ## Quick Start
 

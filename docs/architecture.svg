@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" font-family="-apple-system, Segoe UI, Roboto, sans-serif">
+  <defs>
+    <linearGradient id="bgCG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c1117"/><stop offset="1" stop-color="#1e1432"/>
+    </linearGradient>
+    <linearGradient id="cliCG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#0369a1"/></linearGradient>
+    <linearGradient id="proxyCG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fb923c"/><stop offset="1" stop-color="#9a3412"/></linearGradient>
+    <linearGradient id="breakerCG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f87171"/><stop offset="1" stop-color="#991b1b"/></linearGradient>
+    <linearGradient id="dataCG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#facc15"/><stop offset="1" stop-color="#854d0e"/></linearGradient>
+    <linearGradient id="provCG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4ade80"/><stop offset="1" stop-color="#166534"/></linearGradient>
+    <linearGradient id="dashCG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c084fc"/><stop offset="1" stop-color="#6b21a8"/></linearGradient>
+    <filter id="shCG"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.5"/></filter>
+    <marker id="arrCG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#cbd5e1"/>
+    </marker>
+    <marker id="arrBlock" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f87171"/>
+    </marker>
+  </defs>
+  <rect width="1100" height="640" fill="url(#bgCG)"/>
+  <text x="550" y="40" text-anchor="middle" fill="#e2e8f0" font-size="22" font-weight="700">CostGuard — Real-Time AI Spend Circuit Breaker</text>
+
+  <!-- Clients -->
+  <g filter="url(#shCG)">
+    <rect x="30" y="100" width="180" height="320" rx="18" fill="#0c0f1f" stroke="#7dd3fc" stroke-opacity="0.45"/>
+    <text x="120" y="128" text-anchor="middle" fill="#bae6fd" font-size="13" font-weight="700">CLIENTS</text>
+    <g transform="translate(50,155)"><rect width="140" height="55" rx="12" fill="url(#cliCG)"/><text x="70" y="34" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">OpenAI SDK</text></g>
+    <g transform="translate(50,225)"><rect width="140" height="55" rx="12" fill="url(#cliCG)"/><text x="70" y="34" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">Anthropic SDK</text></g>
+    <g transform="translate(50,295)"><rect width="140" height="55" rx="12" fill="url(#cliCG)"/><text x="70" y="34" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">Custom Apps</text></g>
+  </g>
+
+  <!-- Proxy -->
+  <g filter="url(#shCG)">
+    <rect x="240" y="100" width="380" height="440" rx="18" fill="#0c0f1f" stroke="#fb923c" stroke-opacity="0.5"/>
+    <text x="430" y="128" text-anchor="middle" fill="#fdba74" font-size="13" font-weight="700">COSTGUARD PROXY</text>
+    <g transform="translate(265,155)"><rect width="330" height="48" rx="10" fill="url(#proxyCG)"/><text x="165" y="30" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">FastAPI Server (OpenAI-compatible)</text></g>
+    <g transform="translate(265,215)"><rect width="155" height="60" rx="10" fill="url(#breakerCG)"/><text x="77" y="26" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Circuit Breaker</text><text x="77" y="46" text-anchor="middle" fill="#fee2e2" font-size="10">session · hour · day · project</text></g>
+    <g transform="translate(440,215)"><rect width="155" height="60" rx="10" fill="url(#proxyCG)"/><text x="77" y="26" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Cost Estimator</text><text x="77" y="46" text-anchor="middle" fill="#ffedd5" font-size="10">tiktoken pre-call</text></g>
+    <g transform="translate(265,290)"><rect width="155" height="60" rx="10" fill="url(#proxyCG)"/><text x="77" y="26" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Safe Mode Gate</text><text x="77" y="46" text-anchor="middle" fill="#ffedd5" font-size="10">explicit confirm</text></g>
+    <g transform="translate(440,290)"><rect width="155" height="60" rx="10" fill="url(#proxyCG)"/><text x="77" y="26" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Alert Manager</text><text x="77" y="46" text-anchor="middle" fill="#ffedd5" font-size="10">console · webhook · file</text></g>
+    <g transform="translate(265,365)"><rect width="330" height="50" rx="10" fill="url(#dashCG)"/><text x="165" y="31" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">WebSocket Server (live metrics)</text></g>
+    <g transform="translate(265,430)"><rect width="330" height="84" rx="10" fill="#1f2937" stroke="#f87171" stroke-dasharray="4 3"/>
+      <text x="165" y="28" text-anchor="middle" fill="#fca5a5" font-size="12" font-weight="700">Evaluation order</text>
+      <text x="165" y="50" text-anchor="middle" fill="#e5e7eb" font-size="11">session → hour → day → project</text>
+      <text x="165" y="70" text-anchor="middle" fill="#9ca3af" font-size="10">trip any limit → OPEN circuit · block + alert</text>
+    </g>
+  </g>
+
+  <!-- Data -->
+  <g filter="url(#shCG)">
+    <rect x="650" y="100" width="200" height="200" rx="18" fill="#0c0f1f" stroke="#facc15" stroke-opacity="0.5"/>
+    <text x="750" y="128" text-anchor="middle" fill="#fde68a" font-size="13" font-weight="700">DATA</text>
+    <g transform="translate(670,155)"><rect width="160" height="55" rx="12" fill="url(#dataCG)"/><text x="80" y="34" text-anchor="middle" fill="#1f1303" font-size="13" font-weight="700">SQLite DB</text></g>
+    <g transform="translate(670,225)"><rect width="160" height="55" rx="12" fill="url(#dataCG)"/><text x="80" y="34" text-anchor="middle" fill="#1f1303" font-size="13" font-weight="700">Pricing Cache</text></g>
+  </g>
+
+  <!-- Providers -->
+  <g filter="url(#shCG)">
+    <rect x="870" y="100" width="200" height="280" rx="18" fill="#0c0f1f" stroke="#4ade80" stroke-opacity="0.5"/>
+    <text x="970" y="128" text-anchor="middle" fill="#86efac" font-size="13" font-weight="700">PROVIDERS</text>
+    <g transform="translate(890,155)"><rect width="160" height="55" rx="12" fill="url(#provCG)"/><text x="80" y="34" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">OpenAI</text></g>
+    <g transform="translate(890,225)"><rect width="160" height="55" rx="12" fill="url(#provCG)"/><text x="80" y="34" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">Anthropic</text></g>
+    <g transform="translate(890,295)"><rect width="160" height="55" rx="12" fill="url(#provCG)"/><text x="80" y="34" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">OpenRouter</text></g>
+  </g>
+
+  <!-- Dashboard -->
+  <g filter="url(#shCG)">
+    <rect x="650" y="320" width="420" height="220" rx="18" fill="#0c0f1f" stroke="#c084fc" stroke-opacity="0.5"/>
+    <text x="860" y="348" text-anchor="middle" fill="#e9d5ff" font-size="13" font-weight="700">DASHBOARD</text>
+    <g transform="translate(670,370)"><rect width="190" height="60" rx="12" fill="url(#dashCG)"/><text x="95" y="28" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">Terminal UI</text><text x="95" y="46" text-anchor="middle" fill="#e9d5ff" font-size="10">live spend &amp; limits</text></g>
+    <g transform="translate(880,370)"><rect width="170" height="60" rx="12" fill="url(#dashCG)"/><text x="85" y="28" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">Real-time Metrics</text><text x="85" y="46" text-anchor="middle" fill="#e9d5ff" font-size="10">WebSocket stream</text></g>
+    <g transform="translate(670,450)"><rect width="380" height="70" rx="10" fill="#1e293b" stroke="#475569"/>
+      <text x="190" y="28" text-anchor="middle" fill="#cbd5e1" font-size="12" font-weight="700">Alert Channels</text>
+      <rect x="20" y="38" width="100" height="22" rx="6" fill="#0ea5e9"/><text x="70" y="54" text-anchor="middle" fill="#fff" font-size="11">console</text>
+      <rect x="140" y="38" width="100" height="22" rx="6" fill="#7c3aed"/><text x="190" y="54" text-anchor="middle" fill="#fff" font-size="11">webhook</text>
+      <rect x="260" y="38" width="100" height="22" rx="6" fill="#10b981"/><text x="310" y="54" text-anchor="middle" fill="#fff" font-size="11">file log</text>
+    </g>
+  </g>
+
+  <g stroke="#cbd5e1" stroke-width="2" fill="none" marker-end="url(#arrCG)">
+    <path d="M210,185 C225,185 225,180 240,180"/>
+    <path d="M210,255 C225,255 225,180 240,180"/>
+    <path d="M210,325 C225,325 225,180 240,180"/>
+    <path d="M620,180 C635,180 635,180 650,180"/>
+    <path d="M620,250 C635,250 635,250 650,250"/>
+  </g>
+  <g stroke="#4ade80" stroke-width="2" fill="none" marker-end="url(#arrCG)" stroke-dasharray="0">
+    <path d="M620,250 C700,250 800,180 870,180"/>
+    <path d="M620,250 C700,250 800,250 870,250"/>
+    <path d="M620,250 C700,250 800,320 870,320"/>
+  </g>
+  <g stroke="#f87171" stroke-width="2" fill="none" marker-end="url(#arrBlock)" stroke-dasharray="5 3">
+    <path d="M342,275 C342,300 200,310 200,260"/>
+    <text x="195" y="350" fill="#fca5a5" font-size="11" font-weight="600" text-anchor="middle">429 BLOCKED</text>
+  </g>
+
+  <text x="550" y="610" text-anchor="middle" fill="#64748b" font-size="12">SDK → proxy estimates cost → circuit breaker decides → request forwards or is blocked · everything streams to dashboard</text>
+</svg>
