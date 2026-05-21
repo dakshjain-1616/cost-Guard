@@ -11,7 +11,7 @@ import tiktoken
 
 from costguard.models import CostEstimateRequest, CostEstimateResponse, Provider, ProviderPricing
 
-# Provider pricing data aligned to API model naming as of April 2026.
+# Provider pricing data aligned to API model naming as of May 2026.
 DEFAULT_PRICING: dict[str, dict[str, Any]] = {
     # OpenAI Models
     "gpt-4.1": {
@@ -114,38 +114,38 @@ DEFAULT_PRICING: dict[str, dict[str, Any]] = {
         "output_price_per_mtok": "15.83",
         "context_window": 200000,
     },
-    # Legacy aliases kept for compatibility with existing integrations/tests.
+    # Current frontier models (May 2026).
     "gpt-5.5": {
         "provider": "openai",
-        "model_name": "GPT-4.1 (legacy alias gpt-5.5)",
+        "model_name": "GPT-5.5",
         "input_price_per_mtok": "5.00",
         "output_price_per_mtok": "30.00",
-        "context_window": 128000,
+        "context_window": 1050000,
     },
     "gpt-5.4": {
         "provider": "openai",
-        "model_name": "GPT-4.1 Mini (legacy alias gpt-5.4)",
+        "model_name": "GPT-5.4",
         "input_price_per_mtok": "2.50",
         "output_price_per_mtok": "15.00",
-        "context_window": 128000,
+        "context_window": 400000,
     },
     "claude-opus-4-7": {
         "provider": "anthropic",
-        "model_name": "Claude Opus 4 (legacy alias claude-opus-4-7)",
+        "model_name": "Claude Opus 4.7",
         "input_price_per_mtok": "5.00",
         "output_price_per_mtok": "25.00",
-        "context_window": 200000,
+        "context_window": 1000000,
     },
     "claude-sonnet-4-6": {
         "provider": "anthropic",
-        "model_name": "Claude Sonnet 4 (legacy alias claude-sonnet-4-6)",
+        "model_name": "Claude Sonnet 4.6",
         "input_price_per_mtok": "3.00",
         "output_price_per_mtok": "15.00",
-        "context_window": 200000,
+        "context_window": 1000000,
     },
     "claude-haiku-4-5": {
         "provider": "anthropic",
-        "model_name": "Claude 3.7 Sonnet (legacy alias claude-haiku-4-5)",
+        "model_name": "Claude Haiku 4.5",
         "input_price_per_mtok": "1.00",
         "output_price_per_mtok": "5.00",
         "context_window": 200000,

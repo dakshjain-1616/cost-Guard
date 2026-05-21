@@ -73,22 +73,29 @@ Run `costguard dashboard` in a separate terminal, or set `COSTGUARD_SESSION_ID=m
 
 - `WS /v1/dashboard/ws` - Real-time dashboard updates
 
-## Supported Models (April 2026)
+## Supported Models (May 2026)
+
+Prices are USD per million tokens (input / output).
 
 ### OpenAI
-- GPT-4.1
-- GPT-4.1 Mini
-- GPT-4.1 Nano
-- GPT-4o ($2.50/$10.00 per MTok)
-- GPT-4o Mini ($0.15/$0.60 per MTok)
+- GPT-5.5 (`gpt-5.5`) — $5.00 / $30.00, 1.05M context
+- GPT-5.4 (`gpt-5.4`) — $2.50 / $15.00, 400K context
+- GPT-4.1 (`gpt-4.1`) — $2.00 / $8.00
+- GPT-4.1 Mini (`gpt-4.1-mini`) — $0.40 / $1.60
+- GPT-4.1 Nano (`gpt-4.1-nano`) — $0.10 / $0.40
+- GPT-4o (`gpt-4o`) — $2.50 / $10.00
+- GPT-4o Mini (`gpt-4o-mini`) — $0.15 / $0.60
 
 ### Anthropic
-- Claude Opus 4 (`claude-opus-4-20250514`)
-- Claude Sonnet 4 (`claude-sonnet-4-20250514`)
-- Claude 3.7 Sonnet (`claude-3-7-sonnet-20250219`)
+- Claude Opus 4.7 (`claude-opus-4-7`) — $5.00 / $25.00, 1M context
+- Claude Sonnet 4.6 (`claude-sonnet-4-6`) — $3.00 / $15.00, 1M context
+- Claude Haiku 4.5 (`claude-haiku-4-5`) — $1.00 / $5.00, 200K context
+- Claude Opus 4 (`claude-opus-4-20250514`) — legacy, kept for compatibility
+- Claude Sonnet 4 (`claude-sonnet-4-20250514`) — legacy
+- Claude 3.7 Sonnet (`claude-3-7-sonnet-20250219`) — legacy
 
 ### OpenRouter
-All OpenAI and Anthropic models available with 5.5% platform fee.
+All OpenAI and Anthropic models above are available with a 5.5% platform fee. Custom pricing can be added via a JSON file (see `PricingManager(custom_pricing_file=...)`).
 
 ## Circuit Breaker Behavior
 
